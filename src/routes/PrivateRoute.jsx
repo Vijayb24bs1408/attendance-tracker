@@ -4,7 +4,9 @@ import useAuth from "../hooks/useAuth";
 export default function PrivateRoute({ children }) {
   const { currentUser } = useAuth();
 
-  if (!currentUser) {
+  const demoMode = localStorage.getItem("demoMode") === "true";
+
+  if (!currentUser && !demoMode) {
     return <Navigate to="/" replace />;
   }
 

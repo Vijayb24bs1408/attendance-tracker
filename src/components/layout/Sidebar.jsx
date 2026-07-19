@@ -60,7 +60,12 @@ export default function Sidebar() {
 
   async function handleLogout() {
     try {
+      // Exit Demo Mode
+      localStorage.removeItem("demoMode");
+
+      // Logout Firebase user (if logged in)
       await logoutUser();
+
       navigate("/", { replace: true });
     } catch (error) {
       alert(error.message);
