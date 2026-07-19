@@ -11,6 +11,8 @@ import Classes from "../pages/Classes";
 import Settings from "../pages/Settings";
 import NotFound from "../pages/NotFound";
 import EditStudent from "../pages/EditStudent";
+import SmartParentAlerts from "../pages/SmartParentAlerts";
+import AIAssistant from "../pages/AIAssistant";
 
 import PrivateRoute from "./PrivateRoute";
 
@@ -89,6 +91,15 @@ export default function AppRouter() {
       />
 
       <Route
+        path="/dashboard/parent-alerts"
+        element={
+          <PrivateRoute>
+            <SmartParentAlerts />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
         path="/dashboard/settings"
         element={
           <PrivateRoute>
@@ -97,6 +108,14 @@ export default function AppRouter() {
         }
       />
 
+      <Route
+        path="/dashboard/ai-assistant"
+        element={
+          <PrivateRoute>
+            <AIAssistant />
+          </PrivateRoute>
+        }
+      />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

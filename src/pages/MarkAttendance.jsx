@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import DashboardLayout from "../components/layout/DashboardLayout";
 import { getStudents } from "../services/studentService";
 import { saveAttendance } from "../services/attendanceService";
+import { generateAlerts } from "../utils/generateAlerts";
 
 export default function MarkAttendance() {
   const [students, setStudents] = useState([]);
@@ -37,10 +38,23 @@ export default function MarkAttendance() {
   }
   async function handleSaveAttendance() {
     try {
+      console.log("Saving attendance...");
+      console.log(students);
+
       await saveAttendance(students);
 
-      alert("Attendance saved successfully.");
+      console.log("Attendance saved successfully");
+
+      // 🔥 IMPORTANT
+      console.log("Students passed to generateAlerts:", students);
+
+      await generateAlerts(students);
+
+      console.log("AI Alerts generated successfully");
+
+      alert("Attendance and AI alerts generated successfully.");
     } catch (error) {
+      console.error(error);
       alert(error.message);
     }
   }

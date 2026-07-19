@@ -16,6 +16,10 @@ export default function AddStudent() {
     email: "",
     phone: "",
     gender: "",
+
+    parentName: "",
+    parentEmail: "",
+    parentPhone: "",
   });
 
   function handleChange(e) {
@@ -32,7 +36,10 @@ export default function AddStudent() {
       !student.name ||
       !student.rollNo ||
       !student.className ||
-      !student.section
+      !student.section ||
+      !student.parentName ||
+      !student.parentEmail ||
+      !student.parentPhone
     ) {
       alert("Please fill all required fields.");
       return;
@@ -55,18 +62,10 @@ export default function AddStudent() {
 
   return (
     <DashboardLayout>
-
       <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow p-8">
+        <h1 className="text-3xl font-bold mb-6">Add Student</h1>
 
-        <h1 className="text-3xl font-bold mb-6">
-          Add Student
-        </h1>
-
-        <form
-          onSubmit={handleSubmit}
-          className="grid md:grid-cols-2 gap-5"
-        >
-
+        <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-5">
           <Input
             label="Student Name"
             name="name"
@@ -110,11 +109,30 @@ export default function AddStudent() {
             onChange={handleChange}
           />
 
-          <div>
+          <Input
+            label="Parent Name"
+            name="parentName"
+            value={student.parentName}
+            onChange={handleChange}
+          />
 
-            <label className="block mb-2 font-medium">
-              Gender
-            </label>
+          <Input
+            label="Parent Email"
+            name="parentEmail"
+            type="email"
+            value={student.parentEmail}
+            onChange={handleChange}
+          />
+
+          <Input
+            label="Parent Phone"
+            name="parentPhone"
+            value={student.parentPhone}
+            onChange={handleChange}
+          />
+
+          <div>
+            <label className="block mb-2 font-medium">Gender</label>
 
             <select
               name="gender"
@@ -127,11 +145,9 @@ export default function AddStudent() {
               <option>Female</option>
               <option>Other</option>
             </select>
-
           </div>
 
           <div className="md:col-span-2">
-
             <button
               type="submit"
               disabled={loading}
@@ -139,30 +155,17 @@ export default function AddStudent() {
             >
               {loading ? "Saving..." : "Add Student"}
             </button>
-
           </div>
-
         </form>
-
       </div>
-
     </DashboardLayout>
   );
 }
 
-function Input({
-  label,
-  name,
-  value,
-  onChange,
-  type = "text",
-}) {
+function Input({ label, name, value, onChange, type = "text" }) {
   return (
     <div>
-
-      <label className="block mb-2 font-medium">
-        {label}
-      </label>
+      <label className="block mb-2 font-medium">{label}</label>
 
       <input
         type={type}
@@ -171,7 +174,6 @@ function Input({
         onChange={onChange}
         className="w-full border rounded-xl h-11 px-3"
       />
-
     </div>
   );
 }

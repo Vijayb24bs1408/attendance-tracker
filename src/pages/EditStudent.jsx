@@ -17,8 +17,11 @@ export default function EditStudent() {
     email: "",
     phone: "",
     gender: "",
-  });
 
+    parentName: "",
+    parentEmail: "",
+    parentPhone: "",
+  });
   const loadStudent = useCallback(async () => {
     try {
       const data = await getStudent(id);
@@ -53,6 +56,10 @@ export default function EditStudent() {
         email: student.email,
         phone: student.phone,
         gender: student.gender,
+
+        parentName: student.parentName,
+        parentEmail: student.parentEmail,
+        parentPhone: student.parentPhone,
       });
 
       alert("Student Updated Successfully ✅");
@@ -117,6 +124,28 @@ export default function EditStudent() {
             label="Phone"
             name="phone"
             value={student.phone}
+            onChange={handleChange}
+          />
+
+          <Input
+            label="Parent Name"
+            name="parentName"
+            value={student.parentName}
+            onChange={handleChange}
+          />
+
+          <Input
+            label="Parent Email"
+            name="parentEmail"
+            type="email"
+            value={student.parentEmail}
+            onChange={handleChange}
+          />
+
+          <Input
+            label="Parent Phone"
+            name="parentPhone"
+            value={student.parentPhone}
             onChange={handleChange}
           />
 
