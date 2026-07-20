@@ -1,5 +1,4 @@
-const API_URL = "http://localhost:5000/api/ai/chat";
-
+const API_URL = `${import.meta.env.VITE_API_URL}/api/ai/chat`;
 export async function askAI(question) {
   const response = await fetch(API_URL, {
     method: "POST",

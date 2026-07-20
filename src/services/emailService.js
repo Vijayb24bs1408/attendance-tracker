@@ -1,5 +1,4 @@
-const API_URL = "http://localhost:5000/api/send-email";
-
+const API_URL = `${import.meta.env.VITE_API_URL}/api/send-email`;
 export async function sendParentEmail(alert) {
   console.log("========== ALERT ==========");
 console.log(JSON.stringify(alert, null, 2));
