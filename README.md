@@ -277,7 +277,7 @@ https://github.com/Vijayb24bs1408/attendance-tracker
 
 **Vijay Kumar Saini**
 
-B.Sc. Applied AI & Data Science
+BS. Applied AI & Data Science
 
 Built for **NxtWave Idea2Impact Hackathon 2026**
 
